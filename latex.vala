@@ -2,7 +2,9 @@ using GLib;
 
 class latex : Object
 {
-	public static void write_header(FileStream table, int columns)
+	public static FileStream table;
+
+	public static void write_header(int columns)
 	{
 		int i;
 
@@ -15,12 +17,12 @@ class latex : Object
 		table.printf("|}\n");
 	}
 
-	public static void write_title_row(FileStream table, string[] columns)
+	public static void write_title_row(string[] columns)
 	{
 		int i;
 		
 		table.printf("\\hline{}");
-		for(i=0;i<columns.length();i++)
+		for(i=0;i<columns.length;i++)
 		{
 			table.printf("{\\bfseries %s} & ", columns[i]);
 		}
@@ -29,12 +31,12 @@ class latex : Object
 		
 	}
 
-	public static void write_row(FileStream table, string[] columns)
+	public static void write_row(string[] columns)
 	{
 		int i;
 		
 		table.printf("\\hline{}");
-		for(i=0;i<columns.length();i++)
+		for(i=0;i<columns.length;i++)
 		{
 			table.printf("%s & ", columns[i]);
 		}
@@ -43,10 +45,10 @@ class latex : Object
 		
 	}
 	
-	public static void end_table(Filestream table)
+	public static void end_table()
 	{
 		table.printf("\\hline\n");
-		table.printf("\\end{tabular}\n")
+		table.printf("\\end{tabular}\n");
 		table.printf("\\end{table}\n");
 	}
 }

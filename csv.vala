@@ -27,10 +27,10 @@ class csv : Object
 		
 		in.rewind();
 		
-		while(!in.eof)
+		while(!in.eof())
 		{
-			if((totest = in.getc()) == '\n')
-				rows++
+			if((totest = (char)in.getc()) == '\n')
+				rows++;
 		}
 		
 		return rows;
