@@ -45,6 +45,7 @@ class latex : Object
 	
 	public static void end_table(Filestream table)
 	{
+		table.printf("\\hline\n");
 		table.printf("\\end{tabular}\n")
 		table.printf("\\end{table}\n");
 	}
