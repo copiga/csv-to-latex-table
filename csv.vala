@@ -2,6 +2,8 @@ using GLib;
 
 class csv : Object
 {
+	public static FileStream in;
+	
 	public static int get_columns(FileStream in)
 	{
 		char totest;
@@ -32,5 +34,22 @@ class csv : Object
 		}
 		
 		return rows;
+	}
+
+	public static string[]? get_row_as_array()
+	{
+		
+		if(in.eof())
+		{
+			return null;
+		}
+
+		string[] toret;
+		string row;
+		
+		row = in.read_line();
+		toret = row.split(",");
+		
+		return toret;
 	}
 }
