@@ -11,7 +11,7 @@ class latex : Object
 		table.printf("\\begin{table}[h!]\n");
 		table.printf("\\begin{tabular}{");
 
-		for(i=0;i<columns;i++)
+		for(i=0;i<=columns;i++)
 			table.printf("|l");
 
 		table.printf("|}\n");
@@ -24,11 +24,11 @@ class latex : Object
 		table.printf("\\hline{}");
 		for(i=0;i<columns.length;i++)
 		{
-			table.printf("{\\bfseries %s} & ", columns[i]);
-		}
-		
-		table.printf("\b\b\b\\\\\n");	//remove last 3 chars and then newline(both LaTeX and textfile)
-		
+			if(!(i==columns.length-1))
+				table.printf("{\\bfseries %s} & ", columns[i]);
+			else
+				table.printf("{\\bfseries %s}\\\\\n", columns[i]);
+		}	
 	}
 
 	public static void write_row(string[] columns)
@@ -38,11 +38,11 @@ class latex : Object
 		table.printf("\\hline{}");
 		for(i=0;i<columns.length;i++)
 		{
-			table.printf("%s & ", columns[i]);
+			if(!(i==columns.length-1))
+				table.printf("%s & ", columns[i]);
+			else
+				table.printf("%s\\\\\n", columns[i]);
 		}
-		
-		table.printf("\b\b\b\\\\\n");	//remove last 3 chars and then newline(both LaTeX and textfile)
-		
 	}
 	
 	public static void end_table()
