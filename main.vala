@@ -11,6 +11,7 @@ int main(string[] argv)
 	
 	if(in==null || out == null)
 	{
+		stdout.printf("usage: %s input.csv output.tex\n", argv[0]);
 		return 1;
 	}
 	
