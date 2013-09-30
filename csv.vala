@@ -6,8 +6,8 @@ class csv : Object
 	
 	public static int get_columns(FileStream in)
 	{
-		char totest;
-		int columns;
+		int totest;
+		int columns = 0;
 		
 		in.rewind();
 
@@ -22,14 +22,14 @@ class csv : Object
 
 	public static int get_rows(FileStream in)
 	{
-		char totest;
-		int rows;
+		int totest;
+		int rows = 0;
 		
 		in.rewind();
 		
 		while(!in.eof())
 		{
-			if((totest = (char)in.getc()) == '\n')
+			if((totest = in.getc()) == '\n')
 				rows++;
 		}
 		

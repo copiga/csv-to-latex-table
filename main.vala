@@ -6,6 +6,8 @@ int main(string[] argv)
 
 	in = FileStream.open(argv[1], "r");
 	out = FileStream.open(argv[2], "w");
+	csv.in = FileStream.open(argv[1], "r");
+	latex.table = FileStream.open(argv[2], "w");
 	
 	if(in==null || out == null)
 	{
@@ -13,14 +15,13 @@ int main(string[] argv)
 	}
 	
 	int csvrows, csvcolumns;
-	int i;
+
 	string[]? row;
 
 	csvrows = csv.get_rows(in);
 	csvcolumns = csv.get_columns(in);
 	
-	csv.in = in;
-	latex.table = out;
+
 
 	latex.write_header(csvcolumns);
 	row = csv.get_row_as_array();
